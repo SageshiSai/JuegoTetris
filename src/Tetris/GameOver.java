@@ -1,8 +1,6 @@
 package Tetris;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -60,7 +58,7 @@ public class GameOver extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\AjedrezConBot\\src\\Imagenes\\gifs-de-game-over-5.gif"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\JuegoTetris\\src\\Tetris\\imagenes\\gifs-de-game-over-5.gif"));
 		lblNewLabel.setBounds(-103, 28, 1076, 236);
 		contentPane.add(lblNewLabel);
 	}
