@@ -2,8 +2,8 @@ package Tetris;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -18,7 +18,6 @@ import javax.swing.ImageIcon;
 
 
 public class tablero extends JPanel implements ActionListener {
-
 	
     final int BoardWidth = 10;
     final int BoardHeight = 22;
@@ -28,7 +27,7 @@ public class tablero extends JPanel implements ActionListener {
     boolean isStarted = false;
     boolean isPaused = false;
     boolean gameOver = false;
-    int numLinesRemoved = 0;
+    public int numLinesRemoved = 0;
     int curX = 0;
     int curY = 0;
     JLabel statusbar;
@@ -46,7 +45,7 @@ public class tablero extends JPanel implements ActionListener {
        timer = new Timer(400, this);
        
        JLabel lblNewLabel = new JLabel("New label");
-       lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\AjedrezConBot\\src\\Imagenes\\fa87df506459fb2a852eeb5d87cc20b6.gif"));
+       lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\JuegoTetris\\src\\Tetris\\imagenes\\fa87df506459fb2a852eeb5d87cc20b6.gif"));
        add(lblNewLabel);
        timer.start(); 
 
@@ -55,6 +54,7 @@ public class tablero extends JPanel implements ActionListener {
        addKeyListener(new TAdapter());
        clearBoard();  
     }
+    
 
     public void actionPerformed(ActionEvent e) {
         if (isFallingFinished) {
@@ -100,7 +100,6 @@ public class tablero extends JPanel implements ActionListener {
         }
         repaint();
     }
-
     public void paint(Graphics g)
     { 
         super.paint(g);
@@ -178,38 +177,11 @@ public class tablero extends JPanel implements ActionListener {
             timer.stop();
             isStarted = false;
             statusbar.setText("game over");
-            gameOver = true;
             
         }
     }
-    public class ImagenSnake extends JPanel {
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            
-            if(gameOver) {
-                g.setColor(new Color(0,0,0));
-            } else {
-                g.setColor(new Color(255,255,255));
-            }
-            g.fillRect(0,0, width, height);
-            g.setColor(new Color(0,0,255));
     
-    
-            g.setColor(new Color(255,0,0));
-                
-            
-            if(gameOver) {
-                g.setFont(new Font("TimesRoman", Font.BOLD, 40));
-                g.drawString("GAME OVER", 300, 200);
-                g.drawString("SCORE "+(listaPosiciones.size()-1), 300, 240);
-
-                g.setFont(new Font("TimesRoman", Font.BOLD, 20));
-                g.drawString("N to Start New Game", 100, 320);
-                g.drawString("ESC to Exit", 100, 340);
-            }
-
-        }
-    }
+        
 
     private boolean tryMove(formas newPiece, int newX, int newY)
     {
@@ -228,6 +200,7 @@ public class tablero extends JPanel implements ActionListener {
         repaint();
         return true;
     }
+    
 
     private void removeFullLines()
     {
@@ -326,7 +299,9 @@ public class tablero extends JPanel implements ActionListener {
                  oneLineDown();
                  break;
              }
+             
 
          }
+         
      }
 }
