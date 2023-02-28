@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Tetris.formas.Tetrominoes;
+import javax.swing.ImageIcon;
 
 
 public class tablero extends JPanel implements ActionListener {
@@ -39,6 +40,10 @@ public class tablero extends JPanel implements ActionListener {
        setFocusable(true);
        curPiece = new formas();
        timer = new Timer(400, this);
+       
+       JLabel lblNewLabel = new JLabel("New label");
+       lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\AjedrezConBot\\src\\Imagenes\\fa87df506459fb2a852eeb5d87cc20b6.gif"));
+       add(lblNewLabel);
        timer.start(); 
 
        statusbar =  parent.getStatusBar();
