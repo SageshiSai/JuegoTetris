@@ -32,6 +32,7 @@ public class tablero extends JPanel implements ActionListener {
     JLabel statusbar;
     formas curPiece;
     Tetrominoes[] board;
+    boolean gameOver = false;
 
 
 
@@ -174,6 +175,37 @@ public class tablero extends JPanel implements ActionListener {
             timer.stop();
             isStarted = false;
             statusbar.setText("game over");
+            gameOver= true;
+            if(gameOver) {
+                g.setColor(new Color(0,0,0));
+            } else {
+                g.setColor(new Color(255,255,255));
+            }
+            g.fillRect(0,0, width, height);
+            g.setColor(new Color(0,0,255));
+    
+            if(listaPosiciones.size() > 0) {
+                for(int i=0;i<listaPosiciones.size();i++) {
+                    Point p = (Point)listaPosiciones.get(i);
+                    g.fillRect(p.x,p.y,widthPoint,heightPoint);
+                }
+            }
+    
+            g.setColor(new Color(255,0,0));
+            g.fillRect(comida.x,comida.y,widthPoint,heightPoint);    
+            
+            if(gameOver) {
+                g.setFont(new Font("TimesRoman", Font.BOLD, 40));
+                g.drawString("GAME OVER", 300, 200);
+                g.drawString("SCORE "+(listaPosiciones.size()-1), 300, 240);
+
+                g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+                g.drawString("N to Start New Game", 100, 320);
+                g.drawString("ESC to Exit", 100, 340);
+            }
+
+        }
+    }
             
         }
     }
