@@ -174,6 +174,7 @@ public class tablero extends JPanel implements ActionListener {
             timer.stop();
             isStarted = false;
             statusbar.setText("game over");
+            
         }
     }
 
