@@ -3,6 +3,7 @@ package Tetris;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -18,7 +19,7 @@ import javax.swing.ImageIcon;
 
 public class tablero extends JPanel implements ActionListener {
 
-
+	
     final int BoardWidth = 10;
     final int BoardHeight = 22;
 
@@ -26,14 +27,16 @@ public class tablero extends JPanel implements ActionListener {
     boolean isFallingFinished = false;
     boolean isStarted = false;
     boolean isPaused = false;
+    boolean gameOver = false;
     int numLinesRemoved = 0;
     int curX = 0;
     int curY = 0;
     JLabel statusbar;
     formas curPiece;
     Tetrominoes[] board;
-    boolean gameOver = false;
-
+    int width = 640;
+    int height = 480;
+    
 
 
     public tablero(Tetris parent) {
@@ -175,7 +178,14 @@ public class tablero extends JPanel implements ActionListener {
             timer.stop();
             isStarted = false;
             statusbar.setText("game over");
-            gameOver= true;
+            gameOver = true;
+            
+        }
+    }
+    public class ImagenSnake extends JPanel {
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            
             if(gameOver) {
                 g.setColor(new Color(0,0,0));
             } else {
@@ -184,15 +194,9 @@ public class tablero extends JPanel implements ActionListener {
             g.fillRect(0,0, width, height);
             g.setColor(new Color(0,0,255));
     
-            if(listaPosiciones.size() > 0) {
-                for(int i=0;i<listaPosiciones.size();i++) {
-                    Point p = (Point)listaPosiciones.get(i);
-                    g.fillRect(p.x,p.y,widthPoint,heightPoint);
-                }
-            }
     
             g.setColor(new Color(255,0,0));
-            g.fillRect(comida.x,comida.y,widthPoint,heightPoint);    
+                
             
             if(gameOver) {
                 g.setFont(new Font("TimesRoman", Font.BOLD, 40));
@@ -204,9 +208,6 @@ public class tablero extends JPanel implements ActionListener {
                 g.drawString("ESC to Exit", 100, 340);
             }
 
-        }
-    }
-            
         }
     }
 
