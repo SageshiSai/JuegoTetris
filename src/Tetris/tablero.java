@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Tetris.formas.Tetrominoes;
-import javax.swing.ImageIcon;
 
 
 public class tablero extends JPanel implements ActionListener {
@@ -36,16 +35,12 @@ public class tablero extends JPanel implements ActionListener {
     int height = 480;
     
 
-
+    //Crea el tablero
     public tablero(Tetris parent) {
 
        setFocusable(true);
        curPiece = new formas();
        timer = new Timer(400, this);
-       
-       JLabel lblNewLabel = new JLabel("New label");
-       lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ikaslea\\Desktop\\KevinAriketak\\EclipseAriketak\\JuegoTetris\\src\\Tetris\\imagenes\\fa87df506459fb2a852eeb5d87cc20b6.gif"));
-       add(lblNewLabel);
        timer.start(); 
 
        statusbar =  parent.getStatusBar();
@@ -54,7 +49,6 @@ public class tablero extends JPanel implements ActionListener {
        clearBoard();  
     }
     
-
     public void actionPerformed(ActionEvent e) {
         if (isFallingFinished) {
             isFallingFinished = false;
@@ -69,7 +63,7 @@ public class tablero extends JPanel implements ActionListener {
     int squareHeight() { return (int) getSize().getHeight() / BoardHeight; }
     Tetrominoes shapeAt(int x, int y) { return board[(y * BoardWidth) + x]; }
 
-
+//comienza el juego
     public void start()
     {
         if (isPaused)
@@ -83,7 +77,7 @@ public class tablero extends JPanel implements ActionListener {
         newPiece();
         timer.start();
     }
-
+//metodo que deveria pausar el juego
     private void pause()
     {
         if (!isStarted)
@@ -126,7 +120,7 @@ public class tablero extends JPanel implements ActionListener {
             }
         }
     }
-
+    //metodo que mueve la pieza hasta que no se pueda mover
     private void dropDown()
     {
         int newY = curY;
@@ -144,13 +138,13 @@ public class tablero extends JPanel implements ActionListener {
             pieceDropped();
     }
 
-
+    //para limpiar el tablero
     private void clearBoard()
     {
         for (int i = 0; i < BoardHeight * BoardWidth; ++i)
             board[i] = Tetrominoes.NoShape;
     }
-
+    //para soltar la pieza, posicionarla.
     private void pieceDropped()
     {
         for (int i = 0; i < 4; ++i) {
@@ -164,7 +158,7 @@ public class tablero extends JPanel implements ActionListener {
         if (!isFallingFinished)
             newPiece();
     }
-
+    //metodo que dice si se puede añadir una nueva pieza al tablero
     private void newPiece()
     {
         curPiece.setRandomShape();
@@ -181,7 +175,7 @@ public class tablero extends JPanel implements ActionListener {
     }
     
         
-
+    //metodo que devuelve true si el poligono se puede mover
     private boolean tryMove(formas newPiece, int newX, int newY)
     {
         for (int i = 0; i < 4; ++i) {
@@ -200,7 +194,7 @@ public class tablero extends JPanel implements ActionListener {
         return true;
     }
     
-
+    //metodo que elimina las lineas
     private void removeFullLines()
     {
         int numFullLines = 0;
@@ -232,7 +226,7 @@ public class tablero extends JPanel implements ActionListener {
             repaint();
         }
      }
-
+     //metodo que colorea las figuras
     private void drawSquare(Graphics g, int x, int y, Tetrominoes shape)
     {
         Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102), 
@@ -258,6 +252,7 @@ public class tablero extends JPanel implements ActionListener {
                          x + squareWidth() - 1, y + 1);
     }
 
+    //CLASE QUE CONTIENE EL FUNCIONAMIENTO DE LAS TECLAS EN EL JUEGO
     class TAdapter extends KeyAdapter {
          public void keyPressed(KeyEvent e) {
 

@@ -5,9 +5,9 @@ import java.lang.Math;
 
 
 public class formas {
-
+    //Enumerados de Tetrominos. (Estados posibles de poligonos);
     enum Tetrominoes { NoShape, ZShape, SShape, LineShape, 
-               TShape, SquareShape, LShape, MirroredLShape };
+                TShape, SquareShape, LShape, MirroredLShape };
 
     private Tetrominoes pieceShape;
     private int coords[][];
@@ -20,10 +20,10 @@ public class formas {
         setShape(Tetrominoes.NoShape);
 
     }
-
+    //Las formas de los poligonos
     public void setShape(Tetrominoes shape) {
 
-         coordsTable = new int[][][] {
+        coordsTable = new int[][][] {
             { { 0, 0 },   { 0, 0 },   { 0, 0 },   { 0, 0 } },
             { { 0, -1 },  { 0, 0 },   { -1, 0 },  { -1, 1 } },
             { { 0, -1 },  { 0, 0 },   { 1, 0 },   { 1, 1 } },
@@ -48,7 +48,7 @@ public class formas {
     public int x(int index) { return coords[index][0]; }
     public int y(int index) { return coords[index][1]; }
     public Tetrominoes getShape()  { return pieceShape; }
-
+//Decide de que manera/lado vendra la ficha que salga (Arriba, abajo, izquierda, derecha VISTA);
     public void setRandomShape()
     {
         Random r = new Random();
@@ -56,7 +56,7 @@ public class formas {
         Tetrominoes[] values = Tetrominoes.values(); 
         setShape(values[x]);
     }
-
+    //cordenada X
     public int minX()
     {
       int m = coords[0][0];
@@ -66,7 +66,7 @@ public class formas {
       return m;
     }
 
-
+ //Cordenada Y
     public int minY() 
     {
       int m = coords[0][1];
@@ -75,7 +75,7 @@ public class formas {
       }
       return m;
     }
-
+    //Rotacion izquierda
     public formas rotateLeft() 
     {
         if (pieceShape == Tetrominoes.SquareShape)
@@ -90,7 +90,7 @@ public class formas {
         }
         return result;
     }
-
+    //Rotacion Derecha
     public formas rotateRight()
     {
         if (pieceShape == Tetrominoes.SquareShape)

@@ -10,7 +10,7 @@ public class Tetris extends JFrame {
 
     JLabel statusbar;
 
-
+    //invoca las caracteristicas principales para ejecutar el juego
     public Tetris() {
 
         statusbar = new JLabel(" 0");
