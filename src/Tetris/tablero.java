@@ -14,7 +14,7 @@ import javax.swing.Timer;
 
 import Tetris.formas.Tetrominoes;
 
-
+/* CLASE IMPORTANTE; CONTIENE TODO PARA QUE FUNCIONE EL JUEGO*/
 public class tablero extends JPanel implements ActionListener {
 	
     final int BoardWidth = 10;
