@@ -116,7 +116,7 @@ public class tablero extends JPanel implements ActionListener {
                 int y = curY - curPiece.y(i);
                 drawSquare(g, 0 + x * squareWidth(),
                            boardTop + (BoardHeight - y - 1) * squareHeight(),
-                           curPiece.getShape());
+                            curPiece.getShape());
             }
         }
     }
@@ -247,25 +247,25 @@ public class tablero extends JPanel implements ActionListener {
 
         g.setColor(color.darker());
         g.drawLine(x + 1, y + squareHeight() - 1,
-                         x + squareWidth() - 1, y + squareHeight() - 1);
+                        x + squareWidth() - 1, y + squareHeight() - 1);
         g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1,
-                         x + squareWidth() - 1, y + 1);
+                        x + squareWidth() - 1, y + 1);
     }
 
     //CLASE QUE CONTIENE EL FUNCIONAMIENTO DE LAS TECLAS EN EL JUEGO
     class TAdapter extends KeyAdapter {
-         public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e) {
 
-             if (!isStarted || curPiece.getShape() == Tetrominoes.NoShape) {  
-                 return;
-             }
+            if (!isStarted || curPiece.getShape() == Tetrominoes.NoShape) {  
+                return;
+            }
 
-             int keycode = e.getKeyCode();
+            int keycode = e.getKeyCode();
 
-             if (keycode == 'p' || keycode == 'P') {
-                 pause();
-                 return;
-             }
+            if (keycode == 'p' || keycode == 'P') {
+                pause();
+                return;
+            }
 
              if (isPaused)
                  return;
